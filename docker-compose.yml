@@ -1,0 +1,53 @@
+version: "3"
+services:
+    backend-db:
+        image: mariadb:10.5
+        container_name: backend-db
+        volumes:
+            - "./data:/var/lib/mysql"
+        ports:
+            - "8081:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        networks:
+            - backend
+        restart: unless-stopped
+
+    backend-api:
+        image: amoraresco/it-academy-project:latest
+        container_name: backend-api
+        links:
+            - backend-db
+            - backend-redis
+        ports:
+            - "88:80"
+            - "882:22"
+        volumes:
+            - "./:/var/www/html"
+        networks:
+            - backend
+        restart: unless-stopped
+
+    backend-mailhog:
+        image: mailhog/mailhog
+        container_name: backend-mailhog
+        ports:
+            - "8825:8025"
+            - "8125:1025"
+        networks:
+            - backend
+
+    backend-redis:
+        image: redis:3.0
+        container_name: backend-redis
+        volumes:
+            - "./data/redis/cache/data:/data"
+        ports:
+            - "8379:6379"
+        restart: unless-stopped
+        networks:
+            - backend
+
+networks:
+    backend:
+        driver: bridge
