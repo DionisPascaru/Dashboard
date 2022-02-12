@@ -52,17 +52,6 @@
 import { CogIcon , LogoutIcon , ChevronDownIcon } from '@heroicons/vue/outline';
 
 export default {
-    created: function() {
-        if(this.$store.getters['auth/loadUser']) {
-            let self = this ;
-            window.addEventListener('click', function(e){
-                if (! self.$refs.dropMenu.contains(e.target) ){
-                    self.drop = false
-                }
-            })
-        }
-    },
-
     components: { CogIcon , LogoutIcon , ChevronDownIcon } ,
     data() {
         return {
@@ -72,6 +61,13 @@ export default {
     computed : {
         user() {
             return this.$store.getters['auth/loadUser'];
+        }
+    },
+    mounted() {
+        console.log('here: ', this.user);
+        if(this.$store.getters['auth/isLoggedIn']){
+            console.log(this.$store.getters['auth/isLoggedIn']);
+            this.$store.dispatch('auth/authUser');
         }
     },
     methods : {

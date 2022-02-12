@@ -10,6 +10,9 @@ const state = () => ({
 const getters = {
     loadUser(state){
         return state.user;
+    },
+    isLoggedIn(state){
+        return state.status.loggedIn;
     }
 }
 
@@ -20,7 +23,6 @@ const actions = {
             localStorage.setItem('accessToken', JSON.stringify(response.data.access_token));
 
             commit('loginSuccess', response.data)
-            commit('GET_USER', response.data);
         } catch (e) {
             throw e;
         }
@@ -30,7 +32,7 @@ const actions = {
     async authUser({commit}){
         try{
             const response = await authUser();
-            commit('GET_USER', response.data);
+            commit('GET_USER', response);
         } catch(e) {
             throw e;
         }
@@ -45,9 +47,8 @@ const mutations = {
     GET_USER(state, user) {
         state.user = user;
     },
-    loginSuccess(state, user) {
+    loginSuccess(state) {
         state.status.loggedIn = true;
-        state.user = user;
     },
     loginFailure(state) {
         state.status.loggedIn = false;

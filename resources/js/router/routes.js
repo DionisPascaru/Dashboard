@@ -1,11 +1,11 @@
 const Settings = () => import('../Views/Settings.vue');
-const Profile = () => import('../Views/Profile.vue');
-const Password = () => import('../Views/Password.vue');
-const Login = () => import('../Views/Login.vue');
-const ForgotPassword = () => import('../Views/ForgotPassword.vue');
-const ResetPassword = () => import('../Views/ResetPassword.vue');
-const VerifyEmail = () => import('../Views/VerifyEmail.vue');
-const Register = () => import('../Views/Register.vue');
+const Profile = () => import('../Views/Profile/Profile.vue');
+const Password = () => import('../Views/Auth/Password.vue');
+const Login = () => import('../Views/Auth/Login.vue');
+const ForgotPassword = () => import('../Views/Auth/ForgotPassword.vue');
+const ResetPassword = () => import('../Views/Auth/ResetPassword.vue');
+const VerifyEmail = () => import('../Views/Auth/VerifyEmail.vue');
+const Register = () => import('../Views/Auth/Register.vue');
 const Home = () => import('../Views/Home.vue');
 const Welcome = () => import('../Views/Welcome.vue')
 
@@ -13,7 +13,9 @@ export default [{
         path: '/',
         component: Welcome,
         name: 'welcome',
-
+        meta: {
+            guard: 'guest'
+        }
     },
     {
         path: '/home',
