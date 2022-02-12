@@ -10,7 +10,7 @@ const httpRequest = axios.create({
 });
 
 const authInterceptor = (config) => {
-    const token = JSON.parse(localStorage.getItem('access_token'));
+    const token = JSON.parse(localStorage.getItem('accessToken'));
     if (token) {
         config.headers[
             "Authorization"
