@@ -25,8 +25,6 @@ const actions = {
         } catch (e) {
             throw e;
         }
-
-
     },
     async authUser({commit}){
         try{

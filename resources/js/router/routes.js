@@ -1,13 +1,8 @@
-const Settings = () => import('../Views/Settings.vue');
-const Profile = () => import('../Views/Profile/Profile.vue');
-const Password = () => import('../Views/Auth/Password.vue');
 const Login = () => import('../Views/Auth/Login.vue');
 const ForgotPassword = () => import('../Views/Auth/ForgotPassword.vue');
 const ResetPassword = () => import('../Views/Auth/ResetPassword.vue');
-const VerifyEmail = () => import('../Views/Profile/VerifyEmail.vue');
 const Register = () => import('../Views/Auth/Register.vue');
 const Dashboard = () => import('../Views/Dashboard.vue');
-// const Welcome = () => import('../Views/Welcome.vue')
 
 export default [
     {
@@ -55,49 +50,7 @@ export default [
         }
     },
     {
-        path: '/verify-email/:id/:hash',
-        props: route => ({
-            id: route.params.id,
-            hash: route.params.hash
-        }),
-        component: VerifyEmail,
-        name: 'verify-email',
-
-    },
-    {
-        path: '/settings',
-        component: Settings,
-        redirect: {
-            name: 'profile'
-        },
-        name: 'settings',
-        meta: {
-            guard: 'auth'
-        },
-        children: [{
-                path: 'profile',
-                component: Profile,
-                name: 'profile',
-                meta: {
-                    guard: 'auth'
-                },
-
-            },
-            {
-                path: 'password',
-                component: Password,
-                name: 'password',
-                meta: {
-                    guard: 'auth'
-                },
-
-            },
-
-        ]
-    },
-    {
         path: '/:pathMatch(.*)*',
         redirect: '/dashboard',
-
     }
 ];
