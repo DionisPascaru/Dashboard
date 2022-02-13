@@ -85,7 +85,7 @@ export default {
         login() {
             this.$store.dispatch('auth/login', {'email': this.email, 'password': this.password})
                 .then(() => {
-                    this.$router.push({name: 'home'})
+                    this.$router.push({name: 'dashboard'})
                 })
                 .catch(e => {
                     this.errors = e.data

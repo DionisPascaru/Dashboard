@@ -90,7 +90,7 @@ export default {
                     'password' : this.password ,
                     'password_confirmation' : this.password_confirmation
                 });
-                this.$router.push({name: 'home'})
+                this.$router.push({name: 'dashboard'})
             } catch (e) {
                 // e.data.errors
                 this.errors = e.data
