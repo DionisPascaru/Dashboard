@@ -74,7 +74,7 @@ export default {
                 .then((res) =>{
                     this.success = res.data.message ?  res.data.message  +  ' Redirecting ...' : ' Redirecting ...'
                     setTimeout(()=>{
-                        this.$router.push({name:'home'})
+                        this.$router.push({name:'dashboard'})
                     },1000)
                 })
                 .catch((err) =>{
@@ -91,12 +91,12 @@ export default {
 
                 this.success = res.data.message + ' Redirecting ...'
                 setTimeout(()=>{
-                        this.$router.push({name:'home'})
+                        this.$router.push({name:'dashboard'})
                     },1000)
             }).catch((err) => {
                 this.errors = 'internal error ! plzase try again later .';
                 setTimeout(()=>{
-                        this.$router.push({name:'home'})
+                        this.$router.push({name:'dashboard'})
                     },1000)
             })
         }

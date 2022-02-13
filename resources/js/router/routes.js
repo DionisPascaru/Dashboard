@@ -4,23 +4,16 @@ const Password = () => import('../Views/Auth/Password.vue');
 const Login = () => import('../Views/Auth/Login.vue');
 const ForgotPassword = () => import('../Views/Auth/ForgotPassword.vue');
 const ResetPassword = () => import('../Views/Auth/ResetPassword.vue');
-const VerifyEmail = () => import('../Views/Auth/VerifyEmail.vue');
+const VerifyEmail = () => import('../Views/Profile/VerifyEmail.vue');
 const Register = () => import('../Views/Auth/Register.vue');
-const Home = () => import('../Views/Home.vue');
-const Welcome = () => import('../Views/Welcome.vue')
+const Dashboard = () => import('../Views/Dashboard.vue');
+// const Welcome = () => import('../Views/Welcome.vue')
 
-export default [{
-        path: '/',
-        component: Welcome,
-        name: 'welcome',
-        meta: {
-            guard: 'guest'
-        }
-    },
+export default [
     {
-        path: '/home',
-        component: Home,
-        name: 'home',
+        path: '/dashboard',
+        component: Dashboard,
+        name: 'dashboard',
         meta: {
             guard: 'auth'
         }
@@ -104,7 +97,7 @@ export default [{
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: '/home',
+        redirect: '/dashboard',
 
     }
 ];

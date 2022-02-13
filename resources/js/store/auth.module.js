@@ -21,8 +21,7 @@ const actions = {
         try {
             const response = await login(email, password);
             localStorage.setItem('accessToken', JSON.stringify(response.data.access_token));
-
-            commit('loginSuccess', response.data)
+            commit('LOGIN_SUCCESS')
         } catch (e) {
             throw e;
         }
@@ -33,6 +32,7 @@ const actions = {
         try{
             const response = await authUser();
             commit('GET_USER', response);
+            commit('LOGIN_SUCCESS');
         } catch(e) {
             throw e;
         }
@@ -47,23 +47,23 @@ const mutations = {
     GET_USER(state, user) {
         state.user = user;
     },
-    loginSuccess(state) {
+    LOGIN_SUCCESS(state) {
         state.status.loggedIn = true;
     },
-    loginFailure(state) {
-        state.status.loggedIn = false;
-        state.user = null;
-    },
+    // loginFailure(state) {
+    //     state.status.loggedIn = false;
+    //     state.user = null;
+    // },
     LOGOUT(state) {
         state.status.loggedIn = false;
         state.user = null;
     },
-    registerSuccess(state) {
-        state.status.loggedIn = false;
-    },
-    registerFailure(state) {
-        state.status.loggedIn = false;
-    }
+    // registerSuccess(state) {
+    //     state.status.loggedIn = false;
+    // },
+    // registerFailure(state) {
+    //     state.status.loggedIn = false;
+    // }
 }
 
 export default {

@@ -6,7 +6,7 @@
                 <div  class="border p-4 font-semibold ">Dashboard</div>
 
                 <div class="p-4 bg-white">
-                    
+
 
                     You are Home !
 
@@ -22,6 +22,7 @@
 
 <script>
 export default {
+    name: 'Dashboard',
     data() {
         return {
         }

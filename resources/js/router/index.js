@@ -12,8 +12,8 @@ router.beforeEach((to, from, next) => {
     const token = localStorage.getItem('accessToken')
 
     if (token) {
-        console.log('guest')
-      if (to.matched.some(route => route.meta.guard === 'guest')) next({ name: 'home' })
+
+      if (to.matched.some(route => route.meta.guard === 'guest')) next({ name: 'dashboard' })
       else next();
 
     } else {
